@@ -1,0 +1,3 @@
+# KaRar Changelog
+
+Henüz doldurulmadý.
