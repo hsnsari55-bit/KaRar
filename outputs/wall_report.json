@@ -1,0 +1,7 @@
+{
+    "total_detected_walls": 356,
+    "average_wall_length": 330.63,
+    "longest_wall": 1166.0,
+    "shortest_wall": 50.0,
+    "ignored_objects": 231
+}
