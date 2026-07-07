@@ -1,0 +1,10 @@
+{
+  "segmentation_enabled": true,
+  "floor_plan_regions": 6,
+  "walls_processed": 229,
+  "total_rooms": 0,
+  "room_areas": [],
+  "largest_room": null,
+  "smallest_room": null,
+  "average_area": 0.0
+}

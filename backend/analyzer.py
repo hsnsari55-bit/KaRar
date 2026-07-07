@@ -1,8 +1,9 @@
 import ezdxf
 from classifier import classify
 from collections import Counter
+from config import DXF
 
-DXF_FILE = r"C:\KaRar\data\test_plan.dxf"
+DXF_FILE = str(DXF)
 
 doc = ezdxf.readfile(DXF_FILE)
 msp = doc.modelspace()

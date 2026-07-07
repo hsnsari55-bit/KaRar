@@ -4,13 +4,15 @@ import ezdxf
 import json
 import math
 from typing import List, Dict, Any, Optional, Tuple
+from pathlib import Path
+from config import DXF, OUTPUT_DIR
 
 # Configuration
-DXF_PATH = r'C:/KaRar/data/GÜZELCE 467 ADA 3 PARSEL .(23.12.2025).dxf'
-WALLS_PATH = r'C:/KaRar/outputs/walls_normalized.json'
-ROOMS_PATH = r'C:/KaRar/outputs/rooms.json'
-OUTPUT_PATH = r'C:/KaRar/outputs/doors.json'
-REPORT_PATH = r'C:/KaRar/outputs/door_report.json'
+DXF_PATH = str(DXF)
+WALLS_PATH = str(OUTPUT_DIR / 'walls_normalized.json')
+ROOMS_PATH = str(OUTPUT_DIR / 'rooms.json')
+OUTPUT_PATH = str(OUTPUT_DIR / 'doors.json')
+REPORT_PATH = str(OUTPUT_DIR / 'door_report.json')
 
 # Coordinate offset to align DXF door coordinates with normalized wall coordinates
 # From coordinate_normalizer.py: X Offset = 18274.87, Y Offset = 16346.3

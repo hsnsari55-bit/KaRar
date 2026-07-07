@@ -1,0 +1,341 @@
+{
+  "total_entities": 12049,
+  "total_text_entities": 1794,
+  "total_regions": 12,
+  "proximity_threshold": 200.0,
+  "region_types": {
+    "Floor Plan": 10,
+    "Roof Plan": 2
+  },
+  "floor_levels": {
+    "Elevation": 6,
+    "Basement": 1,
+    "Section": 3
+  },
+  "unknown_floor_count": 0,
+  "regions": [
+    {
+      "type": "Floor Plan",
+      "floor_level": "Elevation",
+      "confidence": 1.0,
+      "classification_reasoning": [
+        "Text analysis: 2 keyword matches",
+        "  - English keyword 'f2' in text '\\pi106.1808;{\\fcalibri|b0|i0|c0|p34;f21d21d2a\\fcalibri|b0|i0|c162|p34;/467/3}' (weight: 0.89)",
+        "  - Turkish keyword 'bodrum' in text '\\pi168.22786;{\\fsegoe ui|b0|i0|c162|p34;h:2 ayrik ni̇zam i̇rti̇fali̇ yerde 1 bodrum + zemi̇n + 1 normal ve ç.a.p.'tan \\p\\pi307.68033;oluşan b.a.k. vi̇lla projesi̇di̇r.}' (weight: 0.30)",
+        "Elevation indicators: 2 matches",
+        "Section indicators: 1 matches",
+        "Position: First drawing in horizontal layout",
+        "Tall aspect ratio (0.44) suggests section"
+      ],
+      "bounds": {
+        "min_x": 1184.718487287418,
+        "max_x": 2126.71059424662,
+        "min_y": 1833.395668891224,
+        "max_y": 3950.557141263613
+      },
+      "width": 941.9921069592021,
+      "height": 2117.161472372389,
+      "entity_count": 30,
+      "center": {
+        "x": 1655.7145407670191,
+        "y": 2891.9764050774183
+      }
+    },
+    {
+      "type": "Floor Plan",
+      "floor_level": "Basement",
+      "confidence": 1.0,
+      "classification_reasoning": [
+        "Text analysis: 15 keyword matches",
+        "  - Turkish keyword 'bodrum' in text '{\\fsegoe ui|b0|i0|c162|p34;a blok 1.bodrum kat plani}' (weight: 0.33)",
+        "  - Turkish keyword 'bodrum kat' in text '{\\fsegoe ui|b0|i0|c162|p34;a blok 1.bodrum kat plani}' (weight: 0.33)",
+        "  - Turkish keyword 'normal kat' in text '\\pt600;{\\fsegoe ui|b0|i0|c162|p34;1. bodrum kat + zemi̇n kat + 1 normal kat + ç.a.p'tan oluşan b.a.k. vi̇lla projesi̇di̇r.}' (weight: 0.30)",
+        "  - Turkish keyword 'bodrum' in text '\\pt600;{\\fsegoe ui|b0|i0|c162|p34;1. bodrum kat + zemi̇n kat + 1 normal kat + ç.a.p'tan oluşan b.a.k. vi̇lla projesi̇di̇r.}' (weight: 0.30)",
+        "  - Turkish keyword 'bodrum kat' in text '\\pt600;{\\fsegoe ui|b0|i0|c162|p34;1. bodrum kat + zemi̇n kat + 1 normal kat + ç.a.p'tan oluşan b.a.k. vi̇lla projesi̇di̇r.}' (weight: 0.30)",
+        "Elevation indicators: 1 matches",
+        "Section indicators: 1 matches",
+        "Position: First drawing in horizontal layout",
+        "Scale 1:200 consistent with floor plan"
+      ],
+      "bounds": {
+        "min_x": 2125.230709218095,
+        "max_x": 4408.280311239209,
+        "min_y": 1833.547890041345,
+        "max_y": 5723.545770362342
+      },
+      "width": 2283.0496020211144,
+      "height": 3889.9978803209974,
+      "entity_count": 183,
+      "center": {
+        "x": 3266.7555102286524,
+        "y": 3778.5468302018435
+      }
+    },
+    {
+      "type": "Floor Plan",
+      "floor_level": "Elevation",
+      "confidence": 1.0,
+      "classification_reasoning": [
+        "Text analysis: 9 keyword matches",
+        "  - Turkish keyword 'bodrum' in text '{\\fsegoe ui|b0|i0|c162|p34;a blok 1.bodrum kat plani}' (weight: 0.54)",
+        "  - Turkish keyword 'bodrum kat' in text '{\\fsegoe ui|b0|i0|c162|p34;a blok 1.bodrum kat plani}' (weight: 0.54)",
+        "  - Turkish keyword 'normal kat' in text '{\\fsegoe ui|b0|i0|c162|p34;a blok 1.normal kat plani}' (weight: 0.56)",
+        "  - Turkish keyword 'normal kat' in text '\\pt32.004,37.338;{\\fcalibri|b1|i0|c162|p34;1.normal kat  %30  \\ldahi̇li̇\\fcalibri|b1|i0|c0|p34; \\lalanlar}' (weight: 0.30)",
+        "  - Turkish keyword 'bodrum' in text '{\\fsegoe ui|b0|i0|c162|p34;b blok 1.bodrum kat plani}' (weight: 0.31)",
+        "Elevation indicators: 3 matches",
+        "Position: Early in horizontal layout",
+        "Scale 1:50 consistent with floor plan",
+        "Scale 1:50 consistent with floor plan",
+        "Scale 1:50 consistent with floor plan",
+        "Scale 1:200 consistent with floor plan",
+        "Scale 1:50 consistent with floor plan",
+        "Scale 1:50 consistent with floor plan",
+        "Scale 1:50 consistent with floor plan"
+      ],
+      "bounds": {
+        "min_x": 3335.94822963021,
+        "max_x": 9629.697209158996,
+        "min_y": 1833.547890041345,
+        "max_y": 5723.545527376557
+      },
+      "width": 6293.748979528786,
+      "height": 3889.9976373352124,
+      "entity_count": 1580,
+      "center": {
+        "x": 6482.822719394603,
+        "y": 3778.546708708951
+      }
+    },
+    {
+      "type": "Floor Plan",
+      "floor_level": "Section",
+      "confidence": 0.65,
+      "classification_reasoning": [
+        "Text analysis: 2 keyword matches",
+        "  - Turkish keyword 'teras' in text '{\\farial black|b0|i0|c162|p34;\\h1.04167x;teras\\p\\farial black|b0|i0|c0|p34;\\h0.7x;alan:\\farial black|b0|i0|c162|p34;9.26 \\farial black|b0|i0|c0|p34;m²\\farial black|b0|i0|c162|p34;\\pd:l.seramik}' (weight: 0.59)",
+        "  - Turkish keyword 'teras' in text '{\\farial black|b0|i0|c162|p34;\\h1.04167x;teras\\p\\farial black|b0|i0|c0|p34;\\h0.7x;alan:\\farial black|b0|i0|c162|p34;9.26 \\farial black|b0|i0|c0|p34;m²\\farial black|b0|i0|c162|p34;\\pd:l.seramik}' (weight: 0.47)",
+        "Elevation indicators: 1 matches",
+        "Section indicators: 1 matches",
+        "Position: Early in horizontal layout",
+        "Scale 1:50 consistent with floor plan",
+        "Scale 1:50 consistent with floor plan",
+        "Scale 1:50 consistent with floor plan",
+        "Scale 1:50 consistent with floor plan",
+        "Tall aspect ratio (0.45) suggests section"
+      ],
+      "bounds": {
+        "min_x": 9629.697135214892,
+        "max_x": 11370.16956369028,
+        "min_y": 1833.547890041345,
+        "max_y": 5723.545527376557
+      },
+      "width": 1740.4724284753884,
+      "height": 3889.9976373352124,
+      "entity_count": 278,
+      "center": {
+        "x": 10499.933349452585,
+        "y": 3778.546708708951
+      }
+    },
+    {
+      "type": "Floor Plan",
+      "floor_level": "Section",
+      "confidence": 0.6,
+      "classification_reasoning": [
+        "Section indicators: 1 matches",
+        "Position: Middle in horizontal layout",
+        "Scale 1:50 consistent with floor plan",
+        "Scale 1:50 consistent with floor plan",
+        "Scale 1:50 consistent with floor plan",
+        "Scale 1:50 consistent with floor plan",
+        "Scale 1:50 consistent with floor plan",
+        "Scale 1:50 consistent with floor plan"
+      ],
+      "bounds": {
+        "min_x": 11370.16948974618,
+        "max_x": 14752.04139851961,
+        "min_y": 1833.547890041345,
+        "max_y": 5723.545527376557
+      },
+      "width": 3381.87190877343,
+      "height": 3889.9976373352124,
+      "entity_count": 134,
+      "center": {
+        "x": 13061.105444132896,
+        "y": 3778.546708708951
+      }
+    },
+    {
+      "type": "Floor Plan",
+      "floor_level": "Elevation",
+      "confidence": 1.0,
+      "classification_reasoning": [
+        "Elevation indicators: 4 matches",
+        "Section indicators: 1 matches",
+        "Position: Middle in horizontal layout",
+        "Scale 1:50 consistent with floor plan",
+        "Scale 1:50 consistent with floor plan",
+        "Scale 1:50 consistent with floor plan",
+        "Scale 1:50 consistent with floor plan",
+        "Scale 1:50 consistent with floor plan",
+        "Scale 1:50 consistent with floor plan"
+      ],
+      "bounds": {
+        "min_x": 14752.04132457551,
+        "max_x": 18432.05905575953,
+        "min_y": 1833.547890041345,
+        "max_y": 5723.545527376557
+      },
+      "width": 3680.0177311840216,
+      "height": 3889.9976373352124,
+      "entity_count": 185,
+      "center": {
+        "x": 16592.05019016752,
+        "y": 3778.546708708951
+      }
+    },
+    {
+      "type": "Floor Plan",
+      "floor_level": "Elevation",
+      "confidence": 1.0,
+      "classification_reasoning": [
+        "Elevation indicators: 4 matches",
+        "Scale 1:50 consistent with floor plan",
+        "Scale 1:50 consistent with floor plan",
+        "Scale 1:50 consistent with floor plan",
+        "Scale 1:50 consistent with floor plan",
+        "Tall aspect ratio (0.43) suggests section"
+      ],
+      "bounds": {
+        "min_x": 18432.05898181543,
+        "max_x": 20102.0878197264,
+        "min_y": 1833.547890041345,
+        "max_y": 5723.545527376557
+      },
+      "width": 1670.0288379109697,
+      "height": 3889.9976373352124,
+      "entity_count": 252,
+      "center": {
+        "x": 19267.073400770914,
+        "y": 3778.546708708951
+      }
+    },
+    {
+      "type": "Floor Plan",
+      "floor_level": "Elevation",
+      "confidence": 1.0,
+      "classification_reasoning": [
+        "Elevation indicators: 5 matches",
+        "Scale 1:50 consistent with floor plan",
+        "Scale 1:50 consistent with floor plan",
+        "Scale 1:50 consistent with floor plan",
+        "Scale 1:50 consistent with floor plan",
+        "Tall aspect ratio (0.49) suggests section"
+      ],
+      "bounds": {
+        "min_x": 20102.0877457823,
+        "max_x": 22013.00376482211,
+        "min_y": 1833.547890041345,
+        "max_y": 5723.545527376557
+      },
+      "width": 1910.9160190398106,
+      "height": 3889.9976373352124,
+      "entity_count": 409,
+      "center": {
+        "x": 21057.545755302206,
+        "y": 3778.546708708951
+      }
+    },
+    {
+      "type": "Floor Plan",
+      "floor_level": "Elevation",
+      "confidence": 1.0,
+      "classification_reasoning": [
+        "Elevation indicators: 4 matches",
+        "Section indicators: 1 matches",
+        "Position: Last drawing in horizontal layout",
+        "Scale 1:50 consistent with floor plan",
+        "Scale 1:50 consistent with floor plan",
+        "Scale 1:50 consistent with floor plan",
+        "Scale 1:50 consistent with floor plan",
+        "Tall aspect ratio (0.45) suggests section"
+      ],
+      "bounds": {
+        "min_x": 22013.00369087801,
+        "max_x": 23753.4761193534,
+        "min_y": 1833.547890041345,
+        "max_y": 5723.545527376557
+      },
+      "width": 1740.4724284753902,
+      "height": 3889.9976373352124,
+      "entity_count": 225,
+      "center": {
+        "x": 22883.239905115704,
+        "y": 3778.546708708951
+      }
+    },
+    {
+      "type": "Floor Plan",
+      "floor_level": "Section",
+      "confidence": 1.0,
+      "classification_reasoning": [
+        "Text analysis: 1 keyword matches",
+        "  - English keyword 'roof' in text 'roof' (weight: 0.08)",
+        "Layer analysis: 1 matches",
+        "  - Layer 'SITE' contains 'site'",
+        "Elevation indicators: 2 matches",
+        "Section indicators: 5 matches",
+        "Detail indicators: 1 matches",
+        "Position: Last drawing in horizontal layout",
+        "Scale 1:50 consistent with floor plan",
+        "Scale 1:50 consistent with floor plan",
+        "Scale 1:10 indicates detail"
+      ],
+      "bounds": {
+        "min_x": 23753.4760454093,
+        "max_x": 31609.27774407704,
+        "min_y": 1833.547857512522,
+        "max_y": 5723.545527376558
+      },
+      "width": 7855.801698667739,
+      "height": 3889.9976698640367,
+      "entity_count": 5889,
+      "center": {
+        "x": 27681.37689474317,
+        "y": 3778.54669244454
+      }
+    },
+    {
+      "type": "Roof Plan",
+      "bounds": {
+        "min_x": 1184.718487287418,
+        "max_x": 14070.65490257114,
+        "min_y": -3933.611272438581,
+        "max_y": -43.46110969681103
+      },
+      "width": 12885.93641528372,
+      "height": 3890.15016274177,
+      "entity_count": 1443,
+      "center": {
+        "x": 7627.686694929279,
+        "y": -1988.536191067696
+      }
+    },
+    {
+      "type": "Roof Plan",
+      "bounds": {
+        "min_x": 1184.718487287418,
+        "max_x": 8600.97011577435,
+        "min_y": -8556.703377648299,
+        "max_y": -4666.553276177181
+      },
+      "width": 7416.251628486932,
+      "height": 3890.1501014711175,
+      "entity_count": 1441,
+      "center": {
+        "x": 4892.844301530884,
+        "y": -6611.62832691274
+      }
+    }
+  ]
+}

@@ -4,6 +4,8 @@ import ezdxf
 import time
 import sys
 from typing import List, Dict, Any, Optional, Tuple
+from pathlib import Path
+from config import DXF, OUTPUT_DIR
 
 # Cross-platform memory usage
 try:
@@ -15,11 +17,11 @@ except ImportError:
 # -----------------------------
 # CONFIGURATION
 # -----------------------------
-DXF_PATH = r"C:/KaRar/data/GÜZELCE 467 ADA 3 PARSEL .(23.12.2025).dxf"
-WALLS_PATH = r"C:/KaRar/outputs/walls_normalized.json"
-ROOMS_PATH = r"C:/KaRar/outputs/rooms.json"
-OUTPUT_WINDOWS = r"C:/KaRar/outputs/windows.json"
-OUTPUT_REPORT = r"C:/KaRar/outputs/window_report.json"
+DXF_PATH = str(DXF)
+WALLS_PATH = str(OUTPUT_DIR / 'walls_normalized.json')
+ROOMS_PATH = str(OUTPUT_DIR / 'rooms.json')
+OUTPUT_WINDOWS = str(OUTPUT_DIR / 'windows.json')
+OUTPUT_REPORT = str(OUTPUT_DIR / 'window_report.json')
 
 # Window layers (from export_windows.py)
 WINDOW_LAYERS = [

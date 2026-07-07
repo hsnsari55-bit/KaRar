@@ -9,6 +9,7 @@ steps = [
     "export_walls.py",
     "export_doors.py",
     "export_windows.py",
+    "room_detector.py",
     "analyzer.py",
     "save_clusters.py"
 ]

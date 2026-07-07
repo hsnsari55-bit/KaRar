@@ -1,6 +1,8 @@
 import json
+import math
 from shapely.geometry import LineString, Polygon
-from shapely.ops import polygonize
+from shapely.ops import polygonize, unary_union
+from collections import defaultdict
 
 # -----------------------------
 # CONFIGURATION
@@ -10,6 +12,82 @@ INPUT_FILE = r"C:\KaRar\outputs\walls.json"
 OUTPUT_ROOMS_FILE = r"C:\KaRar\outputs\rooms.json"
 OUTPUT_REPORT_FILE = r"C:\KaRar\outputs\room_report.json"
 
+# Snap tolerance for connecting wall endpoints (in DXF units)
+SNAP_TOLERANCE = 5.0  # Adjust based on DXF scale
+
+# -----------------------------
+# HELPER FUNCTIONS
+# -----------------------------
+
+def find_cluster_center(points):
+    """Find the center of a cluster of points."""
+    if not points:
+        return None
+    xs = [p[0] for p in points]
+    ys = [p[1] for p in points]
+    return (sum(xs) / len(xs), sum(ys) / len(ys))
+
+def snap_walls(walls, tolerance):
+    """Snap wall endpoints to create connected topology."""
+    # Collect all endpoints
+    endpoints = []
+    for wall in walls:
+        # Walls have start/end, no type field needed
+        if "start" in wall and "end" in wall:
+            endpoints.append(tuple(wall["start"]))
+            endpoints.append(tuple(wall["end"]))
+    
+    # Cluster nearby points
+    clusters = []
+    used = set()
+    
+    for i, point in enumerate(endpoints):
+        if i in used:
+            continue
+        
+        # Start a new cluster
+        cluster = [point]
+        used.add(i)
+        
+        # Find all points within tolerance
+        for j, other_point in enumerate(endpoints):
+            if j in used:
+                continue
+            dist = math.sqrt((point[0] - other_point[0])**2 + (point[1] - other_point[1])**2)
+            if dist <= tolerance:
+                cluster.append(other_point)
+                used.add(j)
+        
+        clusters.append(cluster)
+    
+    # Build snap dictionary: map each original point to its cluster center
+    snap_dict = {}
+    for cluster in clusters:
+        center = find_cluster_center(cluster)
+        for point in cluster:
+            snap_dict[point] = center
+    
+    # Apply snapping to walls
+    snapped_walls = []
+    for wall in walls:
+        if "start" in wall and "end" in wall:
+            start = tuple(wall["start"])
+            end = tuple(wall["end"])
+            
+            snapped_start = snap_dict.get(start, start)
+            snapped_end = snap_dict.get(end, end)
+            
+            # Skip degenerate walls (start == end after snapping)
+            if snapped_start == snapped_end:
+                continue
+                
+            snapped_wall = wall.copy()
+            snapped_wall["start"] = list(snapped_start)
+            snapped_wall["end"] = list(snapped_end)
+            snapped_walls.append(snapped_wall)
+    
+    return snapped_walls
+
 # -----------------------------
 # LOAD WALLS
 # -----------------------------
@@ -17,10 +95,19 @@ OUTPUT_REPORT_FILE = r"C:\KaRar\outputs\room_report.json"
 with open(INPUT_FILE, "r", encoding="utf-8") as f:
     walls = json.load(f)
 
+print(f"Loaded {len(walls)} walls")
+
+# -----------------------------
+# SNAP WALLS TO FIX TOPOLOGY
+# -----------------------------
+
+walls = snap_walls(walls, SNAP_TOLERANCE)
+print(f"After snapping: {len(walls)} walls")
+
 # Build wall lookup for ID matching
 wall_lookup = {}
 for wall in walls:
-    if wall.get("type") == "LINE":
+    if "start" in wall and "end" in wall:
         start = tuple(wall["start"])
         end = tuple(wall["end"])
         wall_lookup[(start, end)] = wall.get("id", "")
@@ -33,7 +120,7 @@ lines = []
 # -----------------------------
 
 for wall in walls:
-    if wall.get("type") != "LINE":
+    if "start" not in wall or "end" not in wall:
         continue
 
     x1, y1 = wall["start"]

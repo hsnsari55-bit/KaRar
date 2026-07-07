@@ -1,9 +1,8 @@
 import ezdxf
 import json
+from config import DXF
 
-dosya = r"C:\KaRar\data\test_plan.dxf"
-
-doc = ezdxf.readfile(dosya)
+doc = ezdxf.readfile(DXF)
 msp = doc.modelspace()
 
 windows = []

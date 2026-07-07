@@ -1,12 +1,13 @@
 import ezdxf
 import json
+from config import DXF, OUTPUT_DIR
 
 # ============================
 # DOSYALAR
 # ============================
 
-DXF_FILE = r"C:\KaRar\data\test_plan.dxf"
-OUTPUT = r"C:\KaRar\outputs\walls_clean.json"
+DXF_FILE = str(DXF)
+OUTPUT = str(OUTPUT_DIR / "walls_clean.json")
 
 # ============================
 # DXF AÇ

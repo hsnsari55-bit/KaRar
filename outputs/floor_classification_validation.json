@@ -1,0 +1,437 @@
+{
+  "total_drawings": 10,
+  "classification_summary": {
+    "Elevation": 6,
+    "Basement": 1,
+    "Section": 3
+  },
+  "detailed_results": [
+    {
+      "drawing_index": 1,
+      "classification": "Elevation",
+      "confidence": 1.0,
+      "bounds": {
+        "min_x": 1184.718487287418,
+        "max_x": 2126.71059424662,
+        "min_y": 1833.395668891224,
+        "max_y": 3950.557141263613
+      },
+      "reasoning": [
+        "Text analysis: 2 keyword matches",
+        "  - English keyword 'f2' in text '\\pi106.1808;{\\fcalibri|b0|i0|c0|p34;f21d21d2a\\fcalibri|b0|i0|c162|p34;/467/3}' (weight: 0.89)",
+        "  - Turkish keyword 'bodrum' in text '\\pi168.22786;{\\fsegoe ui|b0|i0|c162|p34;h:2 ayrik ni̇zam i̇rti̇fali̇ yerde 1 bodrum + zemi̇n + 1 normal ve ç.a.p.'tan \\p\\pi307.68033;oluşan b.a.k. vi̇lla projesi̇di̇r.}' (weight: 0.30)",
+        "Elevation indicators: 2 matches",
+        "Section indicators: 1 matches",
+        "Position: First drawing in horizontal layout",
+        "Tall aspect ratio (0.44) suggests section"
+      ],
+      "text_samples": [
+        "{\\fCalibri|b0|i0|c162|p34;TOPLAM}",
+        "{\\fCalibri|b0|i0|c162|p34;299.42 <300.00 OLD. EMSAL HESABINA UYGUNDUR.}",
+        "\\pt62.23;{\\fCalibri|b1|i0|c162|p34;TOPLAM  %30 DAHİLİNDE EMSAL HARİCİ\\fCalibri|b1|i0|c0|p34; ALANLAR}",
+        "{\\fCalibri|b0|i0|c162|p34;PARSEL ALANI}",
+        "{\\fCalibri|b0|i0|c162|p34;300.00 x 0.30}",
+        "{\\fCalibri|b0|i0|c162|p34;750.00 x 0.40 =}",
+        "{\\fCalibri|b0|i0|c162|p34;Ç.A.P. X2}",
+        "{\\fCalibri|b0|i0|c162|p34;%30 FAZLASI ALAN}",
+        "{\\fCalibri|b0|i0|c162|p34;ZEMİN KAT X 2 }",
+        "AĞAÇ HESABI"
+      ],
+      "layer_samples": [
+        "CERCEVE"
+      ]
+    },
+    {
+      "drawing_index": 2,
+      "classification": "Basement",
+      "confidence": 1.0,
+      "bounds": {
+        "min_x": 2125.230709218095,
+        "max_x": 4408.280311239209,
+        "min_y": 1833.547890041345,
+        "max_y": 5723.545770362342
+      },
+      "reasoning": [
+        "Text analysis: 15 keyword matches",
+        "  - Turkish keyword 'bodrum' in text '{\\fsegoe ui|b0|i0|c162|p34;a blok 1.bodrum kat plani}' (weight: 0.33)",
+        "  - Turkish keyword 'bodrum kat' in text '{\\fsegoe ui|b0|i0|c162|p34;a blok 1.bodrum kat plani}' (weight: 0.33)",
+        "  - Turkish keyword 'normal kat' in text '\\pt600;{\\fsegoe ui|b0|i0|c162|p34;1. bodrum kat + zemi̇n kat + 1 normal kat + ç.a.p'tan oluşan b.a.k. vi̇lla projesi̇di̇r.}' (weight: 0.30)",
+        "  - Turkish keyword 'bodrum' in text '\\pt600;{\\fsegoe ui|b0|i0|c162|p34;1. bodrum kat + zemi̇n kat + 1 normal kat + ç.a.p'tan oluşan b.a.k. vi̇lla projesi̇di̇r.}' (weight: 0.30)",
+        "  - Turkish keyword 'bodrum kat' in text '\\pt600;{\\fsegoe ui|b0|i0|c162|p34;1. bodrum kat + zemi̇n kat + 1 normal kat + ç.a.p'tan oluşan b.a.k. vi̇lla projesi̇di̇r.}' (weight: 0.30)",
+        "Elevation indicators: 1 matches",
+        "Section indicators: 1 matches",
+        "Position: First drawing in horizontal layout",
+        "Scale 1:200 consistent with floor plan"
+      ],
+      "text_samples": [
+        "{\\fSegoe UI|b0|i0|c162|p34;A BLOK 1.BODRUM KAT PLANI}",
+        "{\\fTimes New Roman|b0|i0|c162|p18;VAZİYET PLANI  Ö:1/200}",
+        "K",
+        "\\pt648;{\\fSegoe UI|b0|i0|c162|p34;SAYIN YUSUF ANIL YÜCELE'E AİT B.A.K. VİLLA PROJESİDİR.}",
+        "\\pt600;{\\fSegoe UI|b0|i0|c162|p34;1. BODRUM KAT + ZEMİN KAT + 1 NORMAL KAT + Ç.A.P'TAN OLUŞAN B.A.K. VİLLA PROJESİDİR.}",
+        "PARSEL NO",
+        "ADA NO",
+        "PAFTA NO",
+        "MAH/KÖY",
+        "İLÇESİ"
+      ],
+      "layer_samples": [
+        "CERCEVE",
+        "YAzı",
+        "k tarama",
+        "KAKS"
+      ]
+    },
+    {
+      "drawing_index": 3,
+      "classification": "Elevation",
+      "confidence": 1.0,
+      "bounds": {
+        "min_x": 3335.94822963021,
+        "max_x": 9629.697209158996,
+        "min_y": 1833.547890041345,
+        "max_y": 5723.545527376557
+      },
+      "reasoning": [
+        "Text analysis: 9 keyword matches",
+        "  - Turkish keyword 'bodrum' in text '{\\fsegoe ui|b0|i0|c162|p34;a blok 1.bodrum kat plani}' (weight: 0.54)",
+        "  - Turkish keyword 'bodrum kat' in text '{\\fsegoe ui|b0|i0|c162|p34;a blok 1.bodrum kat plani}' (weight: 0.54)",
+        "  - Turkish keyword 'normal kat' in text '{\\fsegoe ui|b0|i0|c162|p34;a blok 1.normal kat plani}' (weight: 0.56)",
+        "  - Turkish keyword 'normal kat' in text '\\pt32.004,37.338;{\\fcalibri|b1|i0|c162|p34;1.normal kat  %30  \\ldahi̇li̇\\fcalibri|b1|i0|c0|p34; \\lalanlar}' (weight: 0.30)",
+        "  - Turkish keyword 'bodrum' in text '{\\fsegoe ui|b0|i0|c162|p34;b blok 1.bodrum kat plani}' (weight: 0.31)",
+        "Elevation indicators: 3 matches",
+        "Position: Early in horizontal layout",
+        "Scale 1:50 consistent with floor plan",
+        "Scale 1:50 consistent with floor plan",
+        "Scale 1:50 consistent with floor plan",
+        "Scale 1:200 consistent with floor plan",
+        "Scale 1:50 consistent with floor plan",
+        "Scale 1:50 consistent with floor plan",
+        "Scale 1:50 consistent with floor plan"
+      ],
+      "text_samples": [
+        "{\\fSegoe UI|b0|i0|c162|p34;A BLOK 1.BODRUM KAT PLANI}",
+        "{\\fSegoe UI|b0|i0|c162|p34;Ö:1/50}",
+        "{\\fSegoe UI|b0|i0|c162|p34;A BLOK ZEMİN KAT PLANI}",
+        "{\\fSegoe UI|b0|i0|c162|p34;Ö:1/50}",
+        "{\\fSegoe UI|b0|i0|c162|p34;A BLOK 1.NORMAL KAT PLANI}",
+        "{\\fSegoe UI|b0|i0|c162|p34;Ö:1/50}",
+        "{\\fTimes New Roman|b0|i0|c162|p18;VAZİYET PLANI  Ö:1/200}",
+        "K",
+        "{\\fCalibri|b0|i0|c162|p34;7.00 \\fCalibri|b0|i0|c0|p34;m\\fISOCPEUR|b0|i0|c162|p34;²}",
+        "\\pt32.004,37.338;{\\fCalibri|b1|i0|c162|p34;1.NORMAL KAT  %30  \\LDAHİLİ\\fCalibri|b1|i0|c0|p34; \\lALANLAR}"
+      ],
+      "layer_samples": [
+        "GORUNUS_6_TWA",
+        "Kolon",
+        "merdivenn",
+        "KAKS",
+        "Duvar",
+        "CERCEVE",
+        "mutfak tefriş",
+        "k tarama",
+        "tefriş",
+        "EŞYA TEFRİŞ"
+      ]
+    },
+    {
+      "drawing_index": 4,
+      "classification": "Section",
+      "confidence": 0.65,
+      "bounds": {
+        "min_x": 9629.697135214892,
+        "max_x": 11370.16956369028,
+        "min_y": 1833.547890041345,
+        "max_y": 5723.545527376557
+      },
+      "reasoning": [
+        "Text analysis: 2 keyword matches",
+        "  - Turkish keyword 'teras' in text '{\\farial black|b0|i0|c162|p34;\\h1.04167x;teras\\p\\farial black|b0|i0|c0|p34;\\h0.7x;alan:\\farial black|b0|i0|c162|p34;9.26 \\farial black|b0|i0|c0|p34;m²\\farial black|b0|i0|c162|p34;\\pd:l.seramik}' (weight: 0.59)",
+        "  - Turkish keyword 'teras' in text '{\\farial black|b0|i0|c162|p34;\\h1.04167x;teras\\p\\farial black|b0|i0|c0|p34;\\h0.7x;alan:\\farial black|b0|i0|c162|p34;9.26 \\farial black|b0|i0|c0|p34;m²\\farial black|b0|i0|c162|p34;\\pd:l.seramik}' (weight: 0.47)",
+        "Elevation indicators: 1 matches",
+        "Section indicators: 1 matches",
+        "Position: Early in horizontal layout",
+        "Scale 1:50 consistent with floor plan",
+        "Scale 1:50 consistent with floor plan",
+        "Scale 1:50 consistent with floor plan",
+        "Scale 1:50 consistent with floor plan",
+        "Tall aspect ratio (0.45) suggests section"
+      ],
+      "text_samples": [
+        "{\\fSegoe UI|b0|i0|c162|p34;Ö:1/50}",
+        "{\\fSegoe UI|b0|i0|c162|p34;A BLOK Ç.A.P. KAT PLANI}",
+        "{\\fSegoe UI|b0|i0|c162|p34;Ö:1/50}",
+        "{\\fSegoe UI|b0|i0|c162|p34;Ö:1/50}",
+        "{\\fSegoe UI|b0|i0|c162|p34;B BLOK Ç.A.P. KAT PLANI}",
+        "{\\fSegoe UI|b0|i0|c162|p34;Ö:1/50}",
+        "A",
+        "B",
+        "1",
+        "2"
+      ],
+      "layer_samples": [
+        "merdivenn",
+        "Kolon",
+        "A-AREA-IDEN",
+        "Duvar",
+        "CERCEVE",
+        "tefriş",
+        "k aks",
+        "k pencere",
+        "Görüneyen"
+      ]
+    },
+    {
+      "drawing_index": 5,
+      "classification": "Section",
+      "confidence": 0.6,
+      "bounds": {
+        "min_x": 11370.16948974618,
+        "max_x": 14752.04139851961,
+        "min_y": 1833.547890041345,
+        "max_y": 5723.545527376557
+      },
+      "reasoning": [
+        "Section indicators: 1 matches",
+        "Position: Middle in horizontal layout",
+        "Scale 1:50 consistent with floor plan",
+        "Scale 1:50 consistent with floor plan",
+        "Scale 1:50 consistent with floor plan",
+        "Scale 1:50 consistent with floor plan",
+        "Scale 1:50 consistent with floor plan",
+        "Scale 1:50 consistent with floor plan"
+      ],
+      "text_samples": [
+        "{\\fSegoe UI|b0|i0|c162|p34;Ö:1/50}",
+        "{\\fSegoe UI|b0|i0|c162|p34;A BLOK ÇATI PLANI}",
+        "{\\fSegoe UI|b0|i0|c162|p34;Ö:1/50}",
+        "{\\fSegoe UI|b0|i0|c162|p34;A-A KESİT}",
+        "{\\fSegoe UI|b0|i0|c162|p34;Ö:1/50}",
+        "{\\fSegoe UI|b0|i0|c162|p34;Ö:1/50}",
+        "{\\fSegoe UI|b0|i0|c162|p34;B BLOK ÇATI PLANI}",
+        "{\\fSegoe UI|b0|i0|c162|p34;Ö:1/50}",
+        "{\\fSegoe UI|b0|i0|c162|p34;A-A KESİT}",
+        "{\\fSegoe UI|b0|i0|c162|p34;Ö:1/50}"
+      ],
+      "layer_samples": [
+        "Duvar",
+        "CERCEVE",
+        "k merd izdş",
+        "k aks",
+        "k pencere",
+        "Görüneyen"
+      ]
+    },
+    {
+      "drawing_index": 6,
+      "classification": "Elevation",
+      "confidence": 1.0,
+      "bounds": {
+        "min_x": 14752.04132457551,
+        "max_x": 18432.05905575953,
+        "min_y": 1833.547890041345,
+        "max_y": 5723.545527376557
+      },
+      "reasoning": [
+        "Elevation indicators: 4 matches",
+        "Section indicators: 1 matches",
+        "Position: Middle in horizontal layout",
+        "Scale 1:50 consistent with floor plan",
+        "Scale 1:50 consistent with floor plan",
+        "Scale 1:50 consistent with floor plan",
+        "Scale 1:50 consistent with floor plan",
+        "Scale 1:50 consistent with floor plan",
+        "Scale 1:50 consistent with floor plan"
+      ],
+      "text_samples": [
+        "{\\fSegoe UI|b0|i0|c162|p34;Ö:1/50}",
+        "{\\fSegoe UI|b0|i0|c162|p34;B-B KESİT}",
+        "{\\fSegoe UI|b0|i0|c162|p34;Ö:1/50}",
+        "{\\fSegoe UI|b0|i0|c162|p34;SOL YAN GÖRÜNÜŞ}",
+        "{\\fSegoe UI|b0|i0|c162|p34;ÖN GÖRÜNÜŞ}",
+        "{\\fSegoe UI|b0|i0|c162|p34;Ö:1/50}",
+        "{\\fSegoe UI|b0|i0|c162|p34;Ö:1/50}",
+        "{\\fSegoe UI|b0|i0|c162|p34;B-B KESİT}",
+        "{\\fSegoe UI|b0|i0|c162|p34;Ö:1/50}",
+        "{\\fSegoe UI|b0|i0|c162|p34;SOL YAN GÖRÜNÜŞ}"
+      ],
+      "layer_samples": [
+        "k pencere",
+        "CERCEVE",
+        "k görünüşön",
+        "pencere",
+        "Görüneyen"
+      ]
+    },
+    {
+      "drawing_index": 7,
+      "classification": "Elevation",
+      "confidence": 1.0,
+      "bounds": {
+        "min_x": 18432.05898181543,
+        "max_x": 20102.0878197264,
+        "min_y": 1833.547890041345,
+        "max_y": 5723.545527376557
+      },
+      "reasoning": [
+        "Elevation indicators: 4 matches",
+        "Scale 1:50 consistent with floor plan",
+        "Scale 1:50 consistent with floor plan",
+        "Scale 1:50 consistent with floor plan",
+        "Scale 1:50 consistent with floor plan",
+        "Tall aspect ratio (0.43) suggests section"
+      ],
+      "text_samples": [
+        "{\\fSegoe UI|b0|i0|c162|p34;SOL YAN GÖRÜNÜŞ}",
+        "{\\fSegoe UI|b0|i0|c162|p34;Ö:1/50}",
+        "{\\fSegoe UI|b0|i0|c162|p34;Ö:1/50}",
+        "{\\fVerdana|b0|i0|c162|p34;EĞİM %45}",
+        "{\\fVerdana|b0|i0|c162|p34;EĞİM %45}",
+        "{\\fSegoe UI|b0|i0|c162|p34;SOL YAN GÖRÜNÜŞ}",
+        "{\\fSegoe UI|b0|i0|c162|p34;Ö:1/50}",
+        "{\\fSegoe UI|b0|i0|c162|p34;Ö:1/50}",
+        "{\\fVerdana|b0|i0|c162|p34;EĞİM %45}",
+        "{\\fVerdana|b0|i0|c162|p34;EĞİM %45}"
+      ],
+      "layer_samples": [
+        "korkuluk",
+        "CERCEVE",
+        "k görünüşön",
+        "k tarama",
+        "k pencere",
+        "pencere",
+        "Görüneyen"
+      ]
+    },
+    {
+      "drawing_index": 8,
+      "classification": "Elevation",
+      "confidence": 1.0,
+      "bounds": {
+        "min_x": 20102.0877457823,
+        "max_x": 22013.00376482211,
+        "min_y": 1833.547890041345,
+        "max_y": 5723.545527376557
+      },
+      "reasoning": [
+        "Elevation indicators: 5 matches",
+        "Scale 1:50 consistent with floor plan",
+        "Scale 1:50 consistent with floor plan",
+        "Scale 1:50 consistent with floor plan",
+        "Scale 1:50 consistent with floor plan",
+        "Tall aspect ratio (0.49) suggests section"
+      ],
+      "text_samples": [
+        "{\\fSegoe UI|b0|i0|c162|p34;Ö:1/50}",
+        "{\\fSegoe UI|b0|i0|c162|p34;ARKA GÖRÜNÜŞ}",
+        "{\\fSegoe UI|b0|i0|c162|p34;Ö:1/50}",
+        "{\\fSegoe UI|b0|i0|c162|p34;SAĞ YAN GÖRÜNÜŞ}",
+        "{\\fVerdana|b0|i0|c162|p34;EĞİM %45}",
+        "{\\fVerdana|b0|i0|c162|p34;EĞİM %45}",
+        "{\\fSegoe UI|b0|i0|c162|p34;Ö:1/50}",
+        "{\\fSegoe UI|b0|i0|c162|p34;ARKA GÖRÜNÜŞ}",
+        "{\\fSegoe UI|b0|i0|c162|p34;Ö:1/50}",
+        "{\\fSegoe UI|b0|i0|c162|p34;SAĞ YAN GÖRÜNÜŞ}"
+      ],
+      "layer_samples": [
+        "korkuluk",
+        "CERCEVE",
+        "k görünüşön",
+        "k tarama",
+        "k pencere",
+        "pencere",
+        "Görüneyen"
+      ]
+    },
+    {
+      "drawing_index": 9,
+      "classification": "Elevation",
+      "confidence": 1.0,
+      "bounds": {
+        "min_x": 22013.00369087801,
+        "max_x": 23753.4761193534,
+        "min_y": 1833.547890041345,
+        "max_y": 5723.545527376557
+      },
+      "reasoning": [
+        "Elevation indicators: 4 matches",
+        "Section indicators: 1 matches",
+        "Position: Last drawing in horizontal layout",
+        "Scale 1:50 consistent with floor plan",
+        "Scale 1:50 consistent with floor plan",
+        "Scale 1:50 consistent with floor plan",
+        "Scale 1:50 consistent with floor plan",
+        "Tall aspect ratio (0.45) suggests section"
+      ],
+      "text_samples": [
+        "{\\fSegoe UI|b0|i0|c162|p34;Ö:1/50}",
+        "{\\fSegoe UI|b0|i0|c162|p34;SAĞ YAN GÖRÜNÜŞ}",
+        "{\\fSegoe UI|b0|i0|c162|p34;Ö:1/50}",
+        "{\\fVerdana|b0|i0|c162|p34;EĞİM %45}",
+        "{\\fVerdana|b0|i0|c162|p34;EĞİM %45}",
+        "{\\fSegoe UI|b0|i0|c162|p34;Ö:1/50}",
+        "{\\fSegoe UI|b0|i0|c162|p34;SAĞ YAN GÖRÜNÜŞ}",
+        "{\\fSegoe UI|b0|i0|c162|p34;Ö:1/50}",
+        "{\\fVerdana|b0|i0|c162|p34;EĞİM %45}",
+        "{\\fVerdana|b0|i0|c162|p34;EĞİM %45}"
+      ],
+      "layer_samples": [
+        "korkuluk",
+        "CERCEVE",
+        "k görünüşön",
+        "k tarama",
+        "k pencere",
+        "pencere",
+        "Görüneyen"
+      ]
+    },
+    {
+      "drawing_index": 10,
+      "classification": "Section",
+      "confidence": 1.0,
+      "bounds": {
+        "min_x": 23753.4760454093,
+        "max_x": 31609.27774407704,
+        "min_y": 1833.547857512522,
+        "max_y": 5723.545527376558
+      },
+      "reasoning": [
+        "Text analysis: 1 keyword matches",
+        "  - English keyword 'roof' in text 'roof' (weight: 0.08)",
+        "Layer analysis: 1 matches",
+        "  - Layer 'SITE' contains 'site'",
+        "Elevation indicators: 2 matches",
+        "Section indicators: 5 matches",
+        "Detail indicators: 1 matches",
+        "Position: Last drawing in horizontal layout",
+        "Scale 1:50 consistent with floor plan",
+        "Scale 1:50 consistent with floor plan",
+        "Scale 1:10 indicates detail"
+      ],
+      "text_samples": [
+        "{\\fSegoe UI|b0|i0|c162|p34;Ö:1/50}",
+        "{\\fSegoe UI|b0|i0|c162|p34;Ö:1/50}",
+        "-1.90(130.48)D.Z.K.",
+        "+0.21(129.45)D.Z.K.",
+        "ANA MECRA",
+        "BLOKAJ    15 cm",
+        "GROBETON  10 cm",
+        "60  MEYILLE BAGLANIR.",
+        "A-A KESITI Ö:1/10",
+        "NOT: RAGIT  ANA MECRAYA"
+      ],
+      "layer_samples": [
+        "KASA1",
+        "kesit3",
+        "KİREMİT",
+        "CERCEVE",
+        "tar-ahsap",
+        "k pencere",
+        "tarama",
+        "KASA2",
+        "PEN",
+        "YALıTıM"
+      ]
+    }
+  ]
+}

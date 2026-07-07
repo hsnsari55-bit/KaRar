@@ -2,7 +2,7 @@ import json
 import math
 from pathlib import Path
 from typing import List, Dict, Any, Optional, Tuple
-from shapely.geometry import LineString, Polygon
+from shapely.geometry import LineString, Polygon, Point
 from shapely.ops import polygonize
 
 # Cross-platform path handling
@@ -10,12 +10,14 @@ def get_project_path() -> Path:
     return Path(__file__).parent.parent
 
 class RoomDetectorEngine:
-    """Production-ready Room Detection Engine"""
+    """Production-ready Room Detection Engine with Drawing Segmentation"""
     
-    def __init__(self, 
+    def __init__(self,
                  walls_input: str = "outputs/walls_normalized.json",
-                 rooms_output: str = "outputs/rooms.json", 
-                 report_output: str = "outputs/room_report.json"):
+                 rooms_output: str = "outputs/rooms.json",
+                 report_output: str = "outputs/room_report.json",
+                 use_segmentation: bool = True,
+                 dxf_path: Optional[str] = None):
         """
         Initialize the Room Detection Engine.
         
@@ -23,17 +25,79 @@ class RoomDetectorEngine:
             walls_input: Path to normalized walls JSON file (relative to project root)
             rooms_output: Path for rooms output JSON file
             report_output: Path for room report JSON file
+            use_segmentation: Whether to use drawing segmentation (default: True)
+            dxf_path: Path to DXF file for segmentation (optional)
         """
         self.project_path = get_project_path()
         self.walls_input = walls_input
         self.rooms_output = rooms_output
         self.report_output = report_output
+        self.use_segmentation = use_segmentation
+        self.dxf_path = dxf_path
+        self.floor_plan_regions = []
         
+    def load_segmentation(self) -> None:
+        """Load drawing segmentation to identify floor plan regions."""
+        if not self.use_segmentation:
+            return
+        
+        if not self.dxf_path:
+            # Try to get DXF path from config
+            try:
+                from config import DXF
+                self.dxf_path = str(DXF)
+            except:
+                print("Warning: No DXF path provided, segmentation disabled")
+                self.use_segmentation = False
+                return
+        
+        # Import and run segmentation
+        from drawing_segmentation import DrawingSegmentation
+        
+        print("Loading drawing segmentation...")
+        segmenter = DrawingSegmentation(self.dxf_path)
+        self.floor_plan_regions = segmenter.get_floor_plan_regions()
+        print(f"Found {len(self.floor_plan_regions)} floor plan region(s)")
+    
     def load_walls(self) -> List[Dict[str, Any]]:
         """Load normalized walls from JSON file."""
         walls_path = self.project_path / self.walls_input
         with open(walls_path, 'r', encoding='utf-8') as f:
             return json.load(f)
+    
+    def filter_walls_by_floor_plans(self, walls: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
+        """
+        Filter walls to only include those in floor plan regions.
+        
+        Args:
+            walls: List of all walls
+            
+        Returns:
+            Filtered list of walls in floor plan regions
+        """
+        if not self.use_segmentation or not self.floor_plan_regions:
+            return walls
+        
+        filtered_walls = []
+        for wall in walls:
+            if wall.get("type") != "LINE":
+                continue
+            
+            # Get wall center point
+            start = wall["start"]
+            end = wall["end"]
+            center_x = (start[0] + end[0]) / 2
+            center_y = (start[1] + end[1]) / 2
+            
+            # Check if wall center is in any floor plan region
+            for region in self.floor_plan_regions:
+                bounds = region['bounds']
+                if (bounds['min_x'] <= center_x <= bounds['max_x'] and
+                    bounds['min_y'] <= center_y <= bounds['max_y']):
+                    filtered_walls.append(wall)
+                    break
+        
+        return filtered_walls
     
     def prepare_wall_lines(self, walls: List[Dict[str, Any]]) -> Tuple[List[LineString], Dict[Tuple[Tuple[float, float], Tuple[float, float]], str]]:
         """
@@ -67,12 +131,24 @@ class RoomDetectorEngine:
     def detect_rooms(self) -> List[Dict[str, Any]]:
         """
         Detect enclosed rooms using wall topology.
+        Only processes walls in floor plan regions if segmentation is enabled.
         
         Returns:
             List of room dictionaries with boundary, area, centroid, wall_ids, and confidence
         """
+        # Load segmentation if enabled
+        if self.use_segmentation:
+            self.load_segmentation()
+        
         # Load and prepare walls
         walls = self.load_walls()
+        
+        # Filter walls to only floor plans
+        if self.use_segmentation:
+            original_count = len(walls)
+            walls = self.filter_walls_by_floor_plans(walls)
+            print(f"Filtered walls: {original_count} -> {len(walls)} (floor plans only)")
+        
         lines, wall_lookup = self.prepare_wall_lines(walls)
         
         # Generate polygons from line arrangement
@@ -205,8 +281,12 @@ class RoomDetectorEngine:
     def run_detection(self) -> None:
         """
         Execute the complete room detection pipeline.
+        Automatically filters to floor plans only if segmentation is enabled.
         """
         print("Starting Room Detection Engine...")
+        
+        if self.use_segmentation:
+            print("Drawing segmentation enabled - processing floor plans only")
         
         # Detect rooms
         rooms = self.detect_rooms()
@@ -223,6 +303,6 @@ class RoomDetectorEngine:
         return rooms, report
 
 if __name__ == "__main__":
-    # Execute detection pipeline
-    engine = RoomDetectorEngine()
+    # Execute detection pipeline with segmentation enabled by default
+    engine = RoomDetectorEngine(use_segmentation=True)
     engine.run_detection()
