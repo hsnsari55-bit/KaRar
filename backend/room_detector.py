@@ -1,16 +1,27 @@
 import json
 import math
+import os
 from shapely.geometry import LineString, Polygon
 from shapely.ops import polygonize, unary_union
 from collections import defaultdict
 
-# -----------------------------
-# CONFIGURATION
-# -----------------------------
+print("==========================================")
+print("     KaRar Oda Tespit Motoru Devrede...")
+print("==========================================")
 
-INPUT_FILE = r"C:\KaRar\outputs\walls.json"
-OUTPUT_ROOMS_FILE = r"C:\KaRar\outputs\rooms.json"
-OUTPUT_REPORT_FILE = r"C:\KaRar\outputs\room_report.json"
+# -----------------------------
+# DİNAMİK DOSYA YOLLARI (Klasör Nereye Giderse Gitsin Çalışır)
+# -----------------------------
+# Scriptin çalıştığı 'backend' klasörünün bir üst dizinini ana proje klasörü olarak bul
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+OUTPUT_DIR = os.path.join(BASE_DIR, "outputs")
+
+# Eğer outputs klasörü yoksa otomatik oluştur
+os.makedirs(OUTPUT_DIR, exist_ok=True)
+
+INPUT_FILE = os.path.join(OUTPUT_DIR, "walls.json")
+OUTPUT_ROOMS_FILE = os.path.join(OUTPUT_DIR, "rooms.json")
+OUTPUT_REPORT_FILE = os.path.join(OUTPUT_DIR, "room_report.json")
 
 # Snap tolerance for connecting wall endpoints (in DXF units)
 SNAP_TOLERANCE = 5.0  # Adjust based on DXF scale
@@ -18,7 +29,6 @@ SNAP_TOLERANCE = 5.0  # Adjust based on DXF scale
 # -----------------------------
 # HELPER FUNCTIONS
 # -----------------------------
-
 def find_cluster_center(points):
     """Find the center of a cluster of points."""
     if not points:
@@ -29,15 +39,12 @@ def find_cluster_center(points):
 
 def snap_walls(walls, tolerance):
     """Snap wall endpoints to create connected topology."""
-    # Collect all endpoints
     endpoints = []
     for wall in walls:
-        # Walls have start/end, no type field needed
         if "start" in wall and "end" in wall:
             endpoints.append(tuple(wall["start"]))
             endpoints.append(tuple(wall["end"]))
     
-    # Cluster nearby points
     clusters = []
     used = set()
     
@@ -45,11 +52,9 @@ def snap_walls(walls, tolerance):
         if i in used:
             continue
         
-        # Start a new cluster
         cluster = [point]
         used.add(i)
         
-        # Find all points within tolerance
         for j, other_point in enumerate(endpoints):
             if j in used:
                 continue
@@ -60,14 +65,12 @@ def snap_walls(walls, tolerance):
         
         clusters.append(cluster)
     
-    # Build snap dictionary: map each original point to its cluster center
     snap_dict = {}
     for cluster in clusters:
         center = find_cluster_center(cluster)
         for point in cluster:
             snap_dict[point] = center
     
-    # Apply snapping to walls
     snapped_walls = []
     for wall in walls:
         if "start" in wall and "end" in wall:
@@ -77,7 +80,6 @@ def snap_walls(walls, tolerance):
             snapped_start = snap_dict.get(start, start)
             snapped_end = snap_dict.get(end, end)
             
-            # Skip degenerate walls (start == end after snapping)
             if snapped_start == snapped_end:
                 continue
                 
@@ -91,20 +93,21 @@ def snap_walls(walls, tolerance):
 # -----------------------------
 # LOAD WALLS
 # -----------------------------
+if not os.path.exists(INPUT_FILE):
+    print(f"❌ HATA: {INPUT_FILE} bulunamadı. Önce duvarların çıkarılması gerekiyor.")
+    exit(1)
 
 with open(INPUT_FILE, "r", encoding="utf-8") as f:
     walls = json.load(f)
 
-print(f"Loaded {len(walls)} walls")
+print(f"📥 {len(walls)} adet duvar çizgisi yüklendi.")
 
 # -----------------------------
 # SNAP WALLS TO FIX TOPOLOGY
 # -----------------------------
-
 walls = snap_walls(walls, SNAP_TOLERANCE)
-print(f"After snapping: {len(walls)} walls")
+print(f"🧲 Mıknatıs (Snap) işlemi sonrası: {len(walls)} duvar")
 
-# Build wall lookup for ID matching
 wall_lookup = {}
 for wall in walls:
     if "start" in wall and "end" in wall:
@@ -118,47 +121,39 @@ lines = []
 # -----------------------------
 # COLLECT LINES
 # -----------------------------
-
 for wall in walls:
     if "start" not in wall or "end" not in wall:
         continue
 
     x1, y1 = wall["start"]
     x2, y2 = wall["end"]
-
-    lines.append(
-        LineString([
-            (x1, y1),
-            (x2, y2)
-        ])
-    )
+    lines.append(LineString([(x1, y1), (x2, y2)]))
 
 # -----------------------------
 # FIND CLOSED POLYGONS (ROOMS)
 # -----------------------------
-
 polygons = list(polygonize(lines))
 
 print("--------------------------------")
-print("Kapalı Alan Sayısı :", len(polygons))
+print(f"🏠 Tespit Edilen Kapalı Alan (Oda) Sayısı: {len(polygons)}")
 print("--------------------------------")
 
 # -----------------------------
 # PROCESS ROOMS
 # -----------------------------
-
 rooms = []
 
 for i, poly in enumerate(polygons):
-    # Calculate properties
-    area = poly.area
-    perimeter = poly.length
+    area_mm2 = poly.area
+    perimeter_mm = poly.length
     center = poly.centroid
     
-    # Get polygon boundary coordinates
+    # Gerçek dünya ölçülerine çevirme (DXF mm bazlı olduğu varsayımıyla)
+    area_m2 = area_mm2 / 1000000.0
+    perimeter_m = perimeter_mm / 1000.0
+    
     polygon_coords = list(poly.exterior.coords)
     
-    # Find wall IDs that form this room's boundary
     wall_ids = []
     for j in range(len(polygon_coords) - 1):
         start = polygon_coords[j]
@@ -168,7 +163,6 @@ for i, poly in enumerate(polygons):
         elif (end, start) in wall_lookup:
             wall_ids.append(wall_lookup[(end, start)])
     
-    # Remove duplicates while preserving order
     seen = set()
     unique_wall_ids = []
     for wid in wall_ids:
@@ -176,36 +170,30 @@ for i, poly in enumerate(polygons):
             seen.add(wid)
             unique_wall_ids.append(wid)
 
-    # Assign unique ID
     room_id = f'room_{i+1}'
 
-    # Store room data
     rooms.append({
         'id': room_id,
         'wall_ids': unique_wall_ids,
-        'polygon': polygon_coords,
-        'area': round(area, 2),
-        'perimeter': round(perimeter, 2),
+        'polygon': polygon_coords, # Koordinatlar veri bozulmasın diye orijinal bırakıldı
+        'area_m2': round(area_m2, 2),
+        'perimeter_m': round(perimeter_m, 2),
         'center': [round(center.x, 2), round(center.y, 2)]
     })
 
 # -----------------------------
 # EXPORT ROOMS
 # -----------------------------
-
 with open(OUTPUT_ROOMS_FILE, 'w', encoding='utf-8') as f:
-    json.dump(rooms, f, indent=2)
-
-print(f"Rooms exported to {OUTPUT_ROOMS_FILE}")
+    json.dump(rooms, f, indent=4, ensure_ascii=False)
 
 # -----------------------------
 # GENERATE REPORT
 # -----------------------------
-
 if rooms:
-    areas = [room['area'] for room in rooms]
-    largest_room = max(rooms, key=lambda x: x['area'])
-    smallest_room = min(rooms, key=lambda x: x['area'])
+    areas = [room['area_m2'] for room in rooms]
+    largest_room = max(rooms, key=lambda x: x['area_m2'])
+    smallest_room = min(rooms, key=lambda x: x['area_m2'])
     average_area = sum(areas) / len(areas)
 else:
     areas = []
@@ -215,17 +203,20 @@ else:
 
 report = {
     'total_rooms': len(rooms),
-    'room_areas': areas,
-    'largest_room': largest_room,
-    'smallest_room': smallest_room,
-    'average_area': round(average_area, 2)
+    'room_areas_m2': areas,
+    'largest_room_id': largest_room['id'] if largest_room else None,
+    'largest_room_area_m2': largest_room['area_m2'] if largest_room else 0,
+    'smallest_room_id': smallest_room['id'] if smallest_room else None,
+    'smallest_room_area_m2': smallest_room['area_m2'] if smallest_room else 0,
+    'average_area_m2': round(average_area, 2)
 }
 
 with open(OUTPUT_REPORT_FILE, 'w', encoding='utf-8') as f:
-    json.dump(report, f, indent=2)
-
-print(f"Report exported to {OUTPUT_REPORT_FILE}")
+    json.dump(report, f, indent=4, ensure_ascii=False)
 
 # Print summary
 for room in rooms:
-    print(f"Oda {room['id']}  Alan = {room['area']} m²  Çevre = {room['perimeter']} m  Merkez = {room['center']}")
+    print(f"📌 {room['id'].capitalize()} | Alan: {room['area_m2']} m² | Çevre: {room['perimeter_m']} m")
+
+print("--------------------------------")
+print("✅ Oda tespit işlemi ve raporlama başarıyla tamamlandı!")
