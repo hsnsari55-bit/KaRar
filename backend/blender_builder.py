@@ -20,8 +20,12 @@ KAPI_YUKSEKLIK = 2.1
 PENCERE_YUKSEKLIK = 1.2
 PENCERE_ALT_BOSLUK = 0.9 # Yerden yüksekliği
 
+# OLCU BIRIMI AYARI (Santimetre -> Metre)
+# AutoCAD'de 1 birim 1 cm çizildiği için 100'e bölüyoruz. (Önceki 1000'di, o yüzden ev presleniyordu!)
+OLCEK = 100
+
 # Dosya Yolları
-yol_duvar = r"C:\KaRar\outputs\villa1.json"
+yol_duvar = r"C:\KaRar\outputs\walls.json"
 yol_kapi = r"C:\KaRar\outputs\doors.json"
 yol_pencere = r"C:\KaRar\outputs\windows.json"
 
@@ -37,8 +41,8 @@ if os.path.exists(yol_duvar):
     
     for idx, wall in enumerate(walls):
         if "start" in wall and "end" in wall:
-            x1, y1 = wall["start"][0] / 1000, wall["start"][1] / 1000
-            x2, y2 = wall["end"][0] / 1000, wall["end"][1] / 1000
+            x1, y1 = wall["start"][0] / OLCEK, wall["start"][1] / OLCEK
+            x2, y2 = wall["end"][0] / OLCEK, wall["end"][1] / OLCEK
             
             mid_x, mid_y = (x1 + x2) / 2, (y1 + y2) / 2
             length = math.sqrt((x2 - x1)**2 + (y2 - y1)**2)
@@ -62,14 +66,14 @@ if os.path.exists(yol_kapi):
         
     for idx, door in enumerate(doors):
         x, y = 0, 0
-        genislik = door.get("width", 900) / 1000 # Varsayılan 90cm
+        genislik = door.get("width", 90) / OLCEK # Varsayılan 90cm
         
         # Kapının orta noktasını bul
         if door["type"] == "ARC":
-            x, y = door["center"][0] / 1000, door["center"][1] / 1000
+            x, y = door["center"][0] / OLCEK, door["center"][1] / OLCEK
         elif door["type"] == "LINE":
-            x = (door["start"][0] + door["end"][0]) / 2000
-            y = (door["start"][1] + door["end"][1]) / 2000
+            x = ((door["start"][0] + door["end"][0]) / 2) / OLCEK
+            y = ((door["start"][1] + door["end"][1]) / 2) / OLCEK
             
         # Görünmez kesici küpü oluştur (Duvarı delecek alet)
         bpy.ops.mesh.primitive_cube_add(location=(x, y, KAPI_YUKSEKLIK / 2))
@@ -89,8 +93,8 @@ if os.path.exists(yol_pencere):
         
     for idx, win in enumerate(windows):
         if win["type"] == "LINE":
-            x1, y1 = win["start"][0] / 1000, win["start"][1] / 1000
-            x2, y2 = win["end"][0] / 1000, win["end"][1] / 1000
+            x1, y1 = win["start"][0] / OLCEK, win["start"][1] / OLCEK
+            x2, y2 = win["end"][0] / OLCEK, win["end"][1] / OLCEK
             
             mid_x, mid_y = (x1 + x2) / 2, (y1 + y2) / 2
             genislik = math.sqrt((x2 - x1)**2 + (y2 - y1)**2)
