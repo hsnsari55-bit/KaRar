@@ -1,6 +1,6 @@
-KaRar OS Version : 1.0.0
-Document Version : 1.0
-Last Updated     : 2026-07-09
+KaRar OS Version : 1.1.0
+Document Version : 1.1
+Last Updated     : 2026-07-15
 Status           : Active
 Owner            : KaRar
 
@@ -40,6 +40,16 @@ In Progress
 
 ✓ Scale Conversion (cm → m)
 
+✓ KaRar OS documentation structure created
+
+✓ Permanent project memory (.kaRar) established
+
+✓ AI Boot Sequence defined
+
+✓ Engineering Decision Record (ADR) system established
+
+✓ Cline adopted as primary development agent
+
 ---
 
 # Current Focus
@@ -49,6 +59,10 @@ Stabilize Geometry Engine
 Improve Semantic Detection
 
 Prepare Topology Engine
+
+Strengthen project documentation
+
+Standardize AI collaboration workflow
 
 ---
 
@@ -62,7 +76,13 @@ JSON pipeline is established.
 
 Blender automation is operational.
 
-Project architecture documentation has started.
+Project architecture documentation has been established.
+
+KaRar OS documentation is active.
+
+Permanent AI project memory is available through the .kaRar directory.
+
+Primary development environment uses Cline with Ollama.
 
 ---
 
@@ -84,9 +104,11 @@ Geometry accuracy requires improvement.
 
 Semantic recognition must become more intelligent.
 
-Topology engine is not yet implemented.
+Topology Engine is not yet implemented.
 
 BIM Core has not started.
+
+Project documentation must continue evolving together with the source code.
 
 ---
 
@@ -106,6 +128,35 @@ Semantic Engine
 
 BIM Core
 
+↓
+
+Automatic IFC Generation
+
+↓
+
+Automatic 3D Building Generation
+
+---
+
+# Development Environment
+
+Primary AI Coding Agent
+
+Cline
+
+Primary Local AI Runtime
+
+Ollama
+
+Primary Local Models
+
+- qwen2.5:14b
+- qwen2.5:32b
+
+Project Memory
+
+.kaRar
+
 ---
 
 # Overall Progress
@@ -113,6 +164,10 @@ BIM Core
 Sprint 1
 
 Approximately Completed
+
+Current Objective
+
+Complete Sprint 1 and prepare the Geometry Engine for Sprint 2.
 
 Next Phase
 
