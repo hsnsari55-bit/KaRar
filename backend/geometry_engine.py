@@ -1,55 +1,21 @@
-import json
-from shapely.geometry import LineString
+import ezdxf
 
-JSON_FILE = r"C:\KaRar\outputs\walls_clean.json"
-
-with open(JSON_FILE, "r", encoding="utf-8") as f:
-    walls = json.load(f)
-
-lines = []
-points = []
-
-for wall in walls:
-
-    if wall["type"] == "LINE":
-
-        p1 = tuple(wall["start"])
-        p2 = tuple(wall["end"])
-
-        lines.append(LineString([p1, p2]))
-        points.append(p1)
-        points.append(p2)
-
-    elif wall["type"] == "LWPOLYLINE":
-
-        pts = [tuple(p) for p in wall["points"]]
-
-        lines.append(LineString(pts))
-
-        for p in pts:
-            points.append(p)
-
-print("--------------------------------")
-print("Toplam Geometri :", len(lines))
-print("Toplam Nokta :", len(points))
-
-unique = set(points)
-
-print("Benzersiz Nokta :", len(unique))
-
-endpoint_count = {}
-
-for p in points:
-    endpoint_count[p] = endpoint_count.get(p, 0) + 1
-
-single = [p for p, c in endpoint_count.items() if c == 1]
-
-print("Açık Uç Sayısı :", len(single))
-
-print("--------------------------------")
-print("İlk 20 Açık Uç")
-
-for p in single[:20]:
-    print(p)
-
-print("--------------------------------")
+class GeometryEngine:
+    def __init__(self):
+        pass
+    
+    def read_dxf(self, file_path: str) -> None:
+        self.doc = ezdxf.readfile(file_path)
+        self.modelspace = self.doc.modelspace()
+    
+    def classify_entities(self) -> dict:
+        classified_entities = {'LINE': [], 'LWPOLYLINE': []}
+        
+        for entity in self.modelspace:
+            if entity.dxftype() == 'LINE':
+                classified_entities['LINE'].append(entity)
+                
+            elif entity.dxftype() == 'LWPOLYLINE':
+                classified_entities['LWPOLYLINE'].append(entity)
+            
+        return classified_entities
