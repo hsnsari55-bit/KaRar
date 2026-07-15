@@ -1,6 +1,6 @@
-KaRar OS Version : 1.0.0
-Document Version : 1.0
-Last Updated     : 2026-07-09
+KaRar OS Version : 1.1.0
+Document Version : 1.1
+Last Updated     : 2026-07-15
 Status           : Active
 Owner            : KaRar
 
@@ -8,15 +8,25 @@ Owner            : KaRar
 
 ---
 
+# Current Sprint
+
+Sprint 1
+
+Status
+
+In Progress
+
+---
+
 # Current Task
 
-Design Geometry Engine v2
+Design and stabilize Geometry Engine v2.
 
 ---
 
 # Objective
 
-Build a robust geometry engine capable of converting raw 2D CAD entities into clean architectural geometry.
+Build a robust geometry engine capable of converting raw 2D CAD entities into clean architectural geometry that will become the foundation of the entire KaRar platform.
 
 ---
 
@@ -32,20 +42,79 @@ Build a robust geometry engine capable of converting raw 2D CAD entities into cl
 
 • Prepare topology graph
 
+• Preserve compatibility with future Semantic Engine
+
+---
+
+# Working Principles
+
+Every implementation must
+
+- preserve the current architecture,
+- avoid unnecessary rewrites,
+- follow previous engineering decisions,
+- update documentation whenever required.
+
 ---
 
 # Success Criteria
 
-Geometry produced by the engine must be clean enough for automatic semantic detection and fully automatic 3D generation.
+The Geometry Engine must produce reliable geometry suitable for
+
+- Semantic Detection
+- Topology Engine
+- BIM Core
+- Automatic 3D Building Generation
+
+without requiring manual correction.
 
 ---
 
 # Blockers
 
-None
+No critical technical blockers.
+
+Documentation and implementation must continue together.
 
 ---
 
 # Next Task
 
-Start implementing Topology Engine.
+Complete Geometry Engine v2.
+
+↓
+
+Start Topology Engine.
+
+↓
+
+Prepare Semantic Engine.
+
+---
+
+# Active Development Environment
+
+Primary AI Coding Agent
+
+Cline
+
+Primary Local Runtime
+
+Ollama
+
+Primary Local Models
+
+- qwen2.5:14b
+- qwen2.5:32b
+
+Project Memory
+
+.kaRar
+
+---
+
+# Notes
+
+This document always represents the current development target.
+
+Every AI must consult this file before starting implementation.
