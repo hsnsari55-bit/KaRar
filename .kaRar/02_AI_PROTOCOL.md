@@ -1,6 +1,6 @@
-KaRar OS Version : 1.0.0
-Document Version : 1.0
-Last Updated     : 2026-07-09
+KaRar OS Version : 1.1.0
+Document Version : 1.1
+Last Updated     : 2026-07-15
 Status           : Active
 Owner            : KaRar
 
@@ -22,7 +22,7 @@ No recommendation may conflict with this objective.
 
 # 2. Boot Sequence
 
-Before answering any technical question, the AI must read the project in the following order.
+Before answering any technical question, every AI must inspect the project in the following order.
 
 1. README.md
 2. 00_MANIFESTO.md
@@ -30,12 +30,33 @@ Before answering any technical question, the AI must read the project in the fol
 4. 02_AI_PROTOCOL.md
 5. 03_PROJECT_STATE.md
 6. 04_ACTIVE_TASK.md
+7. 05_DECISIONS.md
+8. 06_KNOWLEDGE_BASE.md
+9. 07_REFERENCES.md
+10. 08_CHANGELOG.md
+11. Current Sprint
+12. 10_PROMPTS.md
 
-Only after understanding these documents may the AI analyze the codebase.
+Only after understanding these documents may the AI inspect the codebase.
 
 ---
 
-# 3. Before Writing Code
+# 3. Repository Inspection Protocol
+
+Before making any technical decision, the AI must
+
+- inspect the existing source code,
+- inspect the related modules,
+- inspect the project documentation,
+- inspect previous engineering decisions,
+- inspect the current sprint,
+- understand the existing architecture.
+
+The AI must never make technical assumptions without inspection.
+
+---
+
+# 4. Before Writing Code
 
 The AI must never start coding immediately.
 
@@ -48,7 +69,7 @@ It must first
 
 ---
 
-# 4. Decision Rules
+# 5. Decision Rules
 
 Every technical decision must answer one question.
 
@@ -64,7 +85,7 @@ reject the solution.
 
 ---
 
-# 5. Coding Rules
+# 6. Coding Rules
 
 The AI should
 
@@ -76,7 +97,7 @@ The AI should
 
 ---
 
-# 6. Modification Rules
+# 7. Modification Rules
 
 When fixing a bug
 
@@ -90,44 +111,67 @@ Instead
 
 ---
 
-# 7. AI Collaboration
+# 8. AI Collaboration
 
-Different AI models may participate.
+Multiple AI systems may participate in KaRar.
 
 Examples
 
 - ChatGPT
+- Cline
 - Gemini
 - Claude
-- Roo Code
+- GitHub Copilot
 - Ollama
-- Copilot
+
+Primary Development Agent
+
+- Cline
+
+Primary Local AI Runtime
+
+- Ollama
+
+Primary Local Models
+
+- qwen2.5:14b
+- qwen2.5:32b
+
+Supporting Cloud Models
+
+- ChatGPT
+- Gemini
+- Claude
 
 Every AI must respect
 
 - Manifesto
 - Architecture
-- Previous engineering decisions
+- Previous Engineering Decisions
+- Current Sprint
+- .kaRar Project Memory
 
 No AI should replace project vision with its own assumptions.
 
 ---
 
-# 8. Knowledge Management
+# 9. Knowledge Management
 
 Project knowledge belongs inside .kaRar.
 
-Important information should never remain only inside chat history.
+Important information must never remain only inside chat history.
 
-Knowledge must be transferred into project documentation.
+Knowledge must always be transferred into project documentation.
+
+The .kaRar directory is the primary long-term knowledge source for every AI.
 
 ---
 
-# 9. Error Handling
+# 10. Error Handling
 
 When uncertainty exists
 
-The AI should
+The AI must
 
 - inspect,
 - verify,
@@ -139,7 +183,7 @@ Never present assumptions as facts.
 
 ---
 
-# 10. Completion Checklist
+# 11. Completion Checklist
 
 Before considering a task complete
 
@@ -154,6 +198,10 @@ the AI should verify
 ✓ Project state updated
 
 ✓ Active task reviewed
+
+✓ Engineering decision documented (if required)
+
+✓ Sprint updated (if required)
 
 ---
 
