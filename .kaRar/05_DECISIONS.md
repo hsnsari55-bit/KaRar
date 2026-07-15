@@ -1,6 +1,6 @@
 KaRar OS Version : 1.0.0
 Document Version : 1.0
-Last Updated     : 2026-07-09
+Last Updated     : 2026-07-15
 Status           : Active
 Owner            : KaRar
 
@@ -111,6 +111,34 @@ Allows future migration to different formats and engines.
 Impact
 
 Flexible architecture.
+
+Status
+
+Accepted
+
+---
+
+# ADR-004
+
+Date
+
+2026-07-15
+
+Problem
+
+Which AI coding agent should be used as the primary development environment for KaRar?
+
+Decision
+
+Adopt Cline as the primary AI coding agent for KaRar development.
+
+Reason
+
+During development, repeated integration issues with Roo Code significantly slowed the workflow. After evaluating alternatives, Cline was selected because it better fits the current KaRar development workflow and supports the required local AI tooling.
+
+Impact
+
+Future prompts, workflows and documentation will target Cline as the default development assistant.
 
 Status
 
