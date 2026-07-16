@@ -825,4 +825,262 @@ When approval is required,
 STOP.
 
 Engineering discipline is always more important than implementation speed.
+## 9. Engineering Workflow
+
+Every engineering task must follow the workflow below.
+
+No step may be skipped.
+
+No step may be reordered.
+
+---
+
+### Phase 1 — Recover
+
+Recover the current engineering state.
+
+Read the required project documentation.
+
+Recover the active task.
+
+Recover the active sprint.
+
+Recover previous engineering decisions.
+
+Inspect the repository.
+
+Inspect Git status.
+
+Inspect Git history.
+
+---
+
+### Phase 2 — Understand
+
+Understand the engineering problem.
+
+Identify:
+
+- Root cause
+- Scope
+- Dependencies
+- Risks
+- Future impact
+
+Never solve symptoms before understanding the problem.
+
+---
+
+### Phase 3 — Plan
+
+Create an engineering plan before implementation.
+
+The plan must answer:
+
+- What will change?
+- Why will it change?
+- Which files will change?
+- Which modules are affected?
+- What are the risks?
+- How can the implementation fail?
+
+Implementation without a plan is prohibited.
+
+---
+
+### Phase 4 — Implement
+
+Implement only the approved task.
+
+Modify only the required code.
+
+Prefer extending existing implementations.
+
+Avoid unnecessary abstractions.
+
+Avoid unnecessary complexity.
+
+---
+
+### Phase 5 — Verify
+
+Verify every modification.
+
+Confirm:
+
+- Correctness
+- Architecture consistency
+- Dependency integrity
+- Backward compatibility
+- Project consistency
+
+Run available tests whenever possible.
+
+Never assume success.
+
+---
+
+### Phase 6 — Review
+
+Review every modification before completion.
+
+Inspect:
+
+- Modified files
+- Git diff
+- Side effects
+- Unrelated changes
+
+Remove accidental modifications.
+
+---
+
+### Phase 7 — Document
+
+Every engineering session should improve project knowledge.
+
+When appropriate,
+
+update
+
+- PROJECT_STATE
+- ACTIVE_TASK
+- DECISIONS
+- KNOWLEDGE_BASE
+
+Never allow important engineering knowledge to remain only inside the conversation.
+
+---
+
+### Phase 8 — Complete
+
+A task is complete only when:
+
+- The implementation is correct.
+- The architecture remains consistent.
+- The active task has been satisfied.
+- The repository is left in a better state than before.
+- Engineering knowledge has been preserved.
+
+Completion is determined by evidence,
+
+never by assumption.
+## 10. Evidence Model
+
+Engineering decisions shall be based on evidence.
+
+Evidence is the foundation of every implementation.
+
+AI reasoning is never evidence.
+
+AI confidence is never evidence.
+
+Assumptions are never evidence.
+
+---
+
+### Accepted Evidence
+
+The following are valid engineering evidence:
+
+- User instructions
+- 11_AGENTS.md
+- .kaRar documentation
+- Repository source code
+- Git history
+- Git diff
+- Git status
+- Runtime output
+- Compiler output
+- Test results
+- Logs
+- Verified documentation
+
+No other source may be considered engineering evidence.
+
+---
+
+### Evidence Hierarchy
+
+When multiple evidence sources exist:
+
+1. User instructions
+2. AGENTS.md
+3. .kaRar documentation
+4. Repository
+5. Git history
+6. Runtime evidence
+7. AI reasoning
+
+Lower evidence must never override higher evidence.
+
+---
+
+### Evidence Verification
+
+Before making any engineering decision, the AI must verify:
+
+- Is the evidence current?
+- Is the evidence complete?
+- Is the evidence reproducible?
+- Does another engineer reach the same conclusion?
+
+If any answer is NO,
+
+STOP.
+
+Collect additional evidence.
+
+---
+
+### Unsupported Claims
+
+The AI must never claim:
+
+- "The bug is fixed."
+- "The implementation is correct."
+- "Sprint completed."
+- "Task completed."
+- "Architecture is correct."
+- "The system works."
+
+unless supported by engineering evidence.
+
+---
+
+### Repository Truth
+
+Repository contents always take precedence over AI assumptions.
+
+If repository code contradicts previous conversation,
+
+the repository is considered the current implementation.
+
+The discrepancy must be reported.
+
+---
+
+### Missing Evidence
+
+If required evidence does not exist,
+
+the AI must state:
+
+"I do not have sufficient engineering evidence."
+
+The AI must never invent missing information.
+
+---
+
+### Engineering Integrity
+
+Evidence must always exist before:
+
+- Analysis
+- Decisions
+- Implementation
+- Verification
+- Completion
+
+Engineering without evidence is prohibited.
 
