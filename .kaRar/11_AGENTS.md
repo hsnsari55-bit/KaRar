@@ -191,3 +191,516 @@ Before every engineering decision, the AI must answer the following question:
 If the answer is NO, implementation must not continue.
 
 If the answer is UNKNOWN, the AI must stop, collect evidence and request clarification before proceeding.
+## 4. Authority
+
+Every engineering decision shall follow the authority hierarchy below.
+
+This hierarchy is absolute.
+
+A lower authority may NEVER override a higher authority.
+
+---
+
+Priority 1
+
+Project Owner
+
+The project owner defines:
+
+- Vision
+- Objectives
+- Sprint priorities
+- Engineering direction
+- Final decisions
+
+The AI must never replace the project owner's decisions.
+
+---
+
+Priority 2
+
+11_AGENTS.md
+
+This document defines how every AI agent must operate.
+
+Every AI agent must comply with this operating system before performing any task.
+
+---
+
+Priority 3
+
+.kaRar Documentation
+
+The .kaRar directory is the official engineering knowledge base of KaRar.
+
+If documentation exists inside .kaRar,
+
+it takes precedence over conversation history.
+
+The AI must always consult the relevant documentation before making engineering decisions.
+
+---
+
+Priority 4
+
+Repository
+
+The repository represents the current implementation.
+
+Before proposing changes,
+
+the AI must inspect the existing implementation.
+
+The AI must understand existing behavior before attempting modifications.
+
+---
+
+Priority 5
+
+Git History
+
+Git history represents historical engineering decisions.
+
+Previous implementations,
+
+design choices,
+
+and engineering evolution should be considered before introducing changes.
+
+History provides context,
+
+not permission to ignore current architecture.
+
+---
+
+Priority 6
+
+Runtime Evidence
+
+Compiler output,
+
+test results,
+
+runtime behavior,
+
+logs,
+
+benchmarks,
+
+and execution evidence always take precedence over assumptions.
+
+The AI must never ignore verified runtime evidence.
+
+---
+
+Priority 7
+
+Engineering Reasoning
+
+Reasoning exists to interpret evidence.
+
+Reasoning never replaces evidence.
+
+If reasoning conflicts with documented facts,
+
+repository state,
+
+or verified runtime behavior,
+
+reasoning is wrong.
+
+---
+
+Conflict Resolution
+
+If two authorities conflict,
+
+the higher authority always wins.
+
+If the conflict cannot be resolved,
+
+STOP.
+
+Explain the conflict.
+
+Present the evidence.
+
+Request user guidance.
+
+Never resolve conflicts by assumption.
+
+Never modify the project while authority conflicts remain unresolved.
+## 5. Context Recovery
+
+An AI agent must assume that every new session starts with zero reliable memory.
+
+Conversation history is temporary.
+
+Repository knowledge is permanent.
+
+The AI must rebuild project context before making any engineering decision.
+
+The recovery process is mandatory.
+
+### Recovery Procedure
+
+Step 1
+
+Read this document (11_AGENTS.md).
+
+Step 2
+
+Read every required document inside the .kaRar directory according to the Boot Sequence.
+
+Step 3
+
+Determine:
+
+- Current Sprint
+- Current Active Task
+- Current Project State
+
+Step 4
+
+Inspect the repository.
+
+Never assume the repository matches the documentation.
+
+Always verify.
+
+Step 5
+
+Inspect Git status.
+
+Identify modified files.
+
+Identify untracked files.
+
+Identify pending work.
+
+Step 6
+
+Read the implementation related to the active task.
+
+Never modify code that has not been inspected.
+
+Step 7
+
+Only after every previous step has completed successfully may implementation begin.
+
+---
+
+### Context Integrity
+
+The AI must continuously verify that its understanding of the project remains consistent.
+
+If new evidence changes the project context,
+
+the AI must immediately update its reasoning.
+
+Never continue using outdated assumptions.
+
+---
+
+### Context Loss
+
+If the AI loses context,
+
+or cannot determine the current engineering state,
+
+STOP.
+
+Do not guess.
+
+Do not continue.
+
+Rebuild the context from the repository.
+
+---
+
+### Repository Is The Source Of Truth
+
+Conversation may explain the project.
+
+Documentation may describe the project.
+
+Git may show the history.
+
+However,
+
+the current repository represents the current implementation.
+
+Engineering decisions must always be validated against the repository before implementation begins.
+## 6. Boot Sequence
+
+Every engineering session MUST begin with the same initialization procedure.
+
+The AI is not allowed to skip, reorder or simplify this process.
+
+### Stage 1 — Initialize
+
+Read:
+
+- 11_AGENTS.md
+
+Confirm that the operating rules are understood before continuing.
+
+Locate any additional AGENTS.md files within the repository.
+
+If multiple AGENTS.md files exist, the nearest AGENTS.md to the files being modified takes precedence within its own scope.
+
+---
+
+### Stage 2 — Recover Project Knowledge
+
+Read the mandatory project documentation in the following order.
+
+1. 00_MANIFESTO.md
+2. 01_ARCHITECTURE.md
+3. 02_AI_PROTOCOL.md
+4. 03_PROJECT_STATE.md
+5. 04_ACTIVE_TASK.md
+6. 05_DECISIONS.md
+7. 06_KNOWLEDGE_BASE.md
+8. 07_REFERENCES.md
+9. 08_CHANGELOG.md
+
+No engineering decision may be made before this process completes.
+
+---
+
+### Stage 3 — Inspect Repository
+
+Inspect the repository.
+
+Identify:
+
+- Current project structure
+- Relevant modules
+- Existing implementations
+- Existing tests
+- Related documentation
+
+Never modify code that has not been inspected.
+
+---
+
+### Stage 4 — Inspect Git
+
+Inspect:
+
+- git status
+- git diff
+- git log
+
+Determine:
+
+- Modified files
+- Untracked files
+- Pending changes
+- Previous engineering decisions
+
+---
+
+### Stage 5 — Understand The Task
+
+Determine:
+
+- Current Sprint
+- Current Active Task
+- Expected Deliverable
+- Engineering Goal
+
+If these cannot be determined,
+
+STOP.
+
+Request clarification.
+
+Never continue with assumptions.
+
+---
+
+### Stage 6 — Engineering Analysis
+
+Before writing code the AI must determine:
+
+- Which modules will change.
+- Which modules depend on them.
+- Possible risks.
+- Possible side effects.
+- Long-term architectural impact.
+
+Implementation must never begin before analysis.
+
+---
+
+### Stage 7 — Implementation Permission
+
+Implementation may begin only if:
+
+✓ Project context has been recovered.
+
+✓ Repository has been inspected.
+
+✓ Git has been inspected.
+
+✓ Active task is known.
+
+✓ Engineering analysis is complete.
+
+✓ No authority conflict exists.
+
+Otherwise,
+
+STOP.
+
+Do not write code.
+
+Do not generate patches.
+
+Do not modify documentation.
+
+Wait until the blocking issue is resolved.
+## 7. Decision Model
+
+Every engineering decision must follow a deterministic decision process.
+
+The AI must never make engineering decisions based on intuition, preference or convenience.
+
+Every decision must be reproducible by another engineer using the same evidence.
+
+---
+
+### Step 1 — Understand
+
+Determine the exact engineering objective.
+
+Do not infer additional objectives.
+
+Do not expand the scope.
+
+Do not redefine the task.
+
+---
+
+### Step 2 — Collect Evidence
+
+Collect evidence from:
+
+- User instructions
+- AGENTS.md
+- .kaRar documentation
+- Repository
+- Git history
+- Runtime evidence
+
+If sufficient evidence cannot be collected,
+
+STOP.
+
+---
+
+### Step 3 — Analyze
+
+Analyze:
+
+- Existing implementation
+- Dependencies
+- Side effects
+- Future impact
+- Architecture consistency
+
+Never analyze only the modified file.
+
+Always analyze the engineering context.
+
+---
+
+### Step 4 — Evaluate
+
+Before making a decision, answer the following questions.
+
+What problem is being solved?
+
+Why does this problem exist?
+
+Is the problem real or assumed?
+
+Which modules are affected?
+
+Will future modules depend on this decision?
+
+Does this increase technical debt?
+
+Does this preserve architectural consistency?
+
+Can another engineer reproduce this decision?
+
+Does this support KaRar's long-term vision?
+
+---
+
+### Step 5 — Decide
+
+Choose the engineering solution that
+
+- preserves architecture,
+- minimizes future maintenance,
+- minimizes unnecessary code,
+- minimizes technical debt,
+- maximizes future extensibility.
+
+Never choose a solution only because it is shorter or easier.
+
+---
+
+### Step 6 — Validate
+
+Validate the decision against
+
+- Project vision
+- Current sprint
+- Active task
+- Existing architecture
+- Existing implementation
+
+If validation fails,
+
+STOP.
+
+---
+
+### Step 7 — Execute
+
+Implementation begins only after every previous step has succeeded.
+
+Never skip validation.
+
+Never implement first and justify later.
+
+Engineering order is always
+
+Evidence
+
+↓
+
+Analysis
+
+↓
+
+Decision
+
+↓
+
+Implementation
+
+↓
+
+Verification
+
+↓
+
+Documentation
+
+
