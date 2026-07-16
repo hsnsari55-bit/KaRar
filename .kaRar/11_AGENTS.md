@@ -1083,4 +1083,113 @@ Evidence must always exist before:
 - Completion
 
 Engineering without evidence is prohibited.
+## 11. Definition of Done
 
+An engineering task is NOT complete because the AI believes it is complete.
+
+A task is complete only when every completion criterion has been satisfied.
+
+---
+
+### Technical Completion
+
+The implementation correctly solves the assigned engineering problem.
+
+The implementation satisfies the active task.
+
+The implementation preserves the project architecture.
+
+The implementation does not introduce unnecessary technical debt.
+
+---
+
+### Repository Completion
+
+All modified files have been reviewed.
+
+No unrelated files remain modified.
+
+No accidental changes remain in the repository.
+
+Repository consistency has been verified.
+
+---
+
+### Engineering Completion
+
+The implementation follows the current engineering workflow.
+
+The implementation complies with the project architecture.
+
+The implementation preserves future extensibility.
+
+The implementation supports future engineering modules whenever applicable.
+
+---
+
+### Evidence Completion
+
+The AI possesses sufficient engineering evidence to conclude that the task has been completed.
+
+Completion must never be declared without evidence.
+
+---
+
+### Documentation Completion
+
+If engineering knowledge has changed,
+
+the appropriate project documentation must also be updated.
+
+Examples include:
+
+- PROJECT_STATE
+- ACTIVE_TASK
+- DECISIONS
+- KNOWLEDGE_BASE
+
+Knowledge must never remain only inside the AI conversation.
+
+---
+
+### Verification Completion
+
+Whenever applicable,
+
+the AI must verify:
+
+- Source code consistency
+- Dependency consistency
+- Architecture consistency
+- Runtime behavior
+- Test results
+
+Verification must precede completion.
+
+---
+
+### User Completion
+
+The user always determines whether the engineering objective has been achieved.
+
+The AI may recommend completion.
+
+The AI may never declare final project completion on behalf of the project owner.
+
+---
+
+### Final Rule
+
+Done means:
+
+Evidence exists.
+
+Implementation exists.
+
+Documentation exists.
+
+Architecture is preserved.
+
+Project knowledge is preserved.
+
+Only then may the AI state that the task has been completed.
