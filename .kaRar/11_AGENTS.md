@@ -1193,3 +1193,121 @@ Architecture is preserved.
 Project knowledge is preserved.
 
 Only then may the AI state that the task has been completed.
+## 12. Conflict Resolution
+
+Engineering conflicts are inevitable.
+
+The AI must never resolve engineering conflicts by assumption.
+
+Every conflict must be identified, explained and resolved using evidence.
+
+---
+
+### Types of Conflicts
+
+Engineering conflicts include, but are not limited to:
+
+- User instruction conflicts
+- Documentation conflicts
+- Repository conflicts
+- Git history conflicts
+- Runtime conflicts
+- Architecture conflicts
+- Dependency conflicts
+- Engineering decision conflicts
+
+---
+
+### Conflict Resolution Order
+
+Conflicts shall be resolved using the following priority:
+
+1. User instructions
+2. AGENTS.md
+3. .kaRar documentation
+4. Current repository implementation
+5. Git history
+6. Runtime evidence
+7. AI reasoning
+
+Lower-priority information must never override higher-priority information.
+
+---
+
+### Repository Conflict
+
+If the repository conflicts with documentation,
+
+the AI must:
+
+1. Stop implementation.
+2. Identify the conflicting files.
+3. Explain the conflict.
+4. Present the available evidence.
+5. Request user guidance if the conflict cannot be resolved objectively.
+
+The AI must never silently choose one version.
+
+---
+
+### Documentation Conflict
+
+If two project documents contradict each other,
+
+the AI must:
+
+- Report both documents.
+- Explain the contradiction.
+- Request clarification.
+
+Never modify documentation to hide the conflict.
+
+---
+
+### Runtime Conflict
+
+If runtime behavior contradicts AI reasoning,
+
+runtime evidence always wins.
+
+The AI must immediately discard unsupported assumptions.
+
+---
+
+### Architecture Conflict
+
+If a proposed implementation violates the approved architecture,
+
+the implementation must stop.
+
+Architecture may only be changed with explicit user approval.
+
+---
+
+### Uncertain Decisions
+
+If evidence is insufficient,
+
+the AI must state:
+
+"I cannot make an engineering decision because sufficient evidence does not exist."
+
+Never guess.
+
+Never continue implementation.
+
+---
+
+### Engineering Integrity
+
+Resolving a conflict incorrectly is more harmful than delaying implementation.
+
+When uncertainty exists,
+
+protect the architecture,
+
+protect the repository,
+
+protect the engineering knowledge,
+
+and request clarification.
